@@ -92,6 +92,7 @@ O menu principal será exibido automaticamente:
 6 - Listar sistemas ja feitos
 7 - salvar historico no arquivo
 8 - Carregar o historico do arquivo
+9 - Ler e resolver sistema de arquivo
 0 - sair
 Escolha a opção desejada:
 ```
@@ -172,6 +173,23 @@ Insira os 4 elementos da matriz 2×2. O programa verifica se é diagonalizável 
 - **Opção 8** → carrega o histórico de uma sessão anterior do arquivo
 
 O histórico persiste entre execuções do programa graças à manipulação de arquivo — ao carregar, todos os registros da sessão anterior ficam disponíveis novamente.
+
+### 9️⃣ Ler e Resolver Sistema de Arquivo
+
+Em vez de digitar os coeficientes um a um no terminal, o programa pode ler um sistema diretamente do arquivo sistema.txt.
+
+O arquivo deve conter o número de equações e variáveis na primeira linha, seguido pelos coeficientes da matriz aumentada (coeficientes + termo independente).
+
+Exemplo de formato para o sistema.txt (representando um sistema 2×2):
+
+```
+2 2
+1 1 5
+2 -1 1
+```
+
+Como funciona no programa:
+Ao selecionar a Opção 9, o programa busca o arquivo na pasta, realiza o escalonamento via Eliminação de Gauss, exibe a classificação/solução na tela e salva automaticamente o resultado no seu histórico de sessão.
 
 ---
 
