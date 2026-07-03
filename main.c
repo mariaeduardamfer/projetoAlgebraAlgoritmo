@@ -20,7 +20,7 @@ int main(){//função principal
         printf("8 - Carregar o historico do arquivo\n");
         printf("9 - Ler e resolver sistema de arquivo\n");
         printf("0 - sair\n");
-        printf("Escolha a opção desejada:");
+        printf("Escolha a opcao desejada:");
         scanf("%d", &opcao);
 
         if(opcao == 1){
@@ -59,7 +59,7 @@ int main(){//função principal
         }else if(opcao == 0){
             menu = 0;//se usuario escolheu sair o menu vai para 0 para parar o loop
         }else{
-            printf("Opcao não existe!\n");//caso o usuario digitar uma opcao que não existe
+            printf("Opcao nao existe!\n");//caso o usuario digitar uma opcao que não existe
         }
     }
 

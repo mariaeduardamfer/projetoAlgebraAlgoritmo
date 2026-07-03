@@ -31,53 +31,115 @@ projetoAlgebraAlgoritmo/
 ├── main.c          # Programa principal: menu e chamadas das funções
 ├── algebra.c       # Implementação dos módulos de Álgebra Linear
 ├── algebra.h       # Cabeçalho: declarações de structs, enums e protótipos
-├── sistema.txt     # Arquivo de exemplo de sistema linear 
+├── sistema.txt     # Arquivo de exemplo de sistema linear
 ├── historico.txt   # Gerado automaticamente ao salvar o histórico
 └── README.md       # Este arquivo
 ```
 
 ---
 
-## 🔧 Requisitos
+## 🔧 Requisitos e Configuração do Ambiente
 
-- Sistema operacional **Linux** (testado no Ubuntu 24)
-- Compilador **GCC** instalado
-- Biblioteca matemática padrão `libm` 
+Este projeto requer o compilador **GCC** instalado no sistema. Siga as instruções abaixo de acordo com o seu sistema operacional.
 
-Para verificar se o GCC está instalado:
+### 🐧 No Linux (Ubuntu/Debian)
+
+Para verificar se o GCC já está instalado:
+
 ```bash
 gcc --version
 ```
 
-Se não estiver instalado:
+Se não estiver instalado, execute:
+
 ```bash
 sudo apt update
 sudo apt install gcc
 ```
 
+### 🪟 No Windows (via MSYS2)
+
+Siga os passos abaixo para instalar e configurar o GCC:
+
+**Passo 1: Baixar o MSYS2**
+- Acesse o site oficial: [msys2.org](https://www.msys2.org)
+- Clique no botão de download para baixar o instalador (`.exe`)
+
+**Passo 2: Instalar o MSYS2**
+- Execute o arquivo `.exe` baixado
+- Clique em **Next** em todas as etapas, mantendo o caminho de instalação padrão (`C:\msys64`)
+- Na última tela, certifique-se de deixar a opção **"Run MSYS2 now"** marcada e clique em **Finish**
+
+**Passo 3: Instalar o GCC**
+
+No terminal do MSYS2 que se abriu automaticamente, digite:
+
+```bash
+pacman -S mingw-w64-x86_64-gcc
+```
+
+> 💡 Quando o terminal perguntar `[Y/n]`, digite `Y` e aperte Enter. Aguarde a conclusão da instalação.
+
+**Passo 4: Adicionar o GCC às Variáveis de Ambiente (PATH)**
+
+Este passo é obrigatório para que o terminal do Windows e o VS Code reconheçam o comando `gcc`.
+
+1. Pressione as teclas `Windows + R`, digite `sysdm.cpl` e aperte Enter
+2. Vá até a aba **Avançado** e clique em **Variáveis de Ambiente...**
+3. Na seção **Variáveis do sistema**, localize a variável `Path` e clique em **Editar**
+4. Clique em **Novo** e adicione o seguinte caminho:
+
+```
+C:\msys64\mingw64\bin
+```
+
+5. Clique em **OK** em todas as janelas para salvar as alterações
+
+**Passo 5: Confirmar a Instalação**
+
+Abra o Prompt de Comando (CMD normal do Windows, não o MSYS2) e digite:
+
+```bash
+gcc --version
+```
+
+Se o terminal retornar a versão do GCC, a configuração foi concluída com sucesso!
+
 ---
 
 ## ⚙️ Como Compilar
 
-Abra o terminal na pasta do projeto e execute:
+Abra o terminal na pasta raiz do projeto e execute o comando correspondente ao seu sistema operacional:
 
+**🐧 No Linux**
 ```bash
 gcc main.c algebra.c -o programa -lm
 ```
 
+**🪟 No Windows**
+```bash
+gcc main.c algebra.c -o programa.exe -lm
+```
+
 Explicação de cada parte do comando:
 - `main.c algebra.c` → arquivos fonte que serão compilados juntos
-- `-o programa` → nome do executável gerado (`programa`)
-- `-lm` → linka a biblioteca matemática (necessária para a função `sqrt()` usada nos autovalores)
+- `-o programa` ou `-o programa.exe` → nome do executável gerado
+- `-lm` → linka a biblioteca matemática padrão `libm` (necessária para a função `sqrt()` usada nos autovalores)
 
 ---
 
 ## ▶️ Como Executar
 
-Após compilar, execute com:
+Após compilar com sucesso, execute o programa com o comando abaixo:
 
+**🐧 No Linux**
 ```bash
 ./programa
+```
+
+**🪟 No Windows**
+```bash
+programa.exe
 ```
 
 O menu principal será exibido automaticamente:
@@ -176,11 +238,11 @@ O histórico persiste entre execuções do programa graças à manipulação de 
 
 ### 9️⃣ Ler e Resolver Sistema de Arquivo
 
-Em vez de digitar os coeficientes um a um no terminal, o programa pode ler um sistema diretamente do arquivo sistema.txt.
+Em vez de digitar os coeficientes um a um no terminal, o programa pode ler um sistema diretamente do arquivo `sistema.txt`.
 
 O arquivo deve conter o número de equações e variáveis na primeira linha, seguido pelos coeficientes da matriz aumentada (coeficientes + termo independente).
 
-Exemplo de formato para o sistema.txt (representando um sistema 2×2):
+**Exemplo de formato para o `sistema.txt`** (representando um sistema 2×2):
 
 ```
 2 2
@@ -188,11 +250,11 @@ Exemplo de formato para o sistema.txt (representando um sistema 2×2):
 2 -1 1
 ```
 
-Como funciona no programa:
+**Como funciona no programa:**
+
 Ao selecionar a Opção 9, o programa busca o arquivo na pasta, realiza o escalonamento via Eliminação de Gauss, exibe a classificação/solução na tela e salva automaticamente o resultado no seu histórico de sessão.
 
 ---
-
 
 ## 👩‍💻 Autora
 

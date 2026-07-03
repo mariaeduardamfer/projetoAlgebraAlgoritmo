@@ -4,7 +4,7 @@
 struct Sistema lerSistema(){ //essa struct  le quantas equações, variaveis mais o resultado de cada equação
     struct Sistema s; //variavel do tipo sistema que vai ser preenchida e depois retornada 
 
-        printf("Quantas equações?");
+        printf("Quantas equacoes?");
         scanf("%d", &s.linhas); //salva na propriedade linhas do sistema s
         printf("Quantas variaveis?");
         scanf("%d", &s.colunas); //mesma coisa so que para coluna
@@ -15,7 +15,7 @@ struct Sistema lerSistema(){ //essa struct  le quantas equações, variaveis mai
             for(int j = 0; j < s.colunas; j++){// percore cada coluna, coef de cada variav da equação atual
                 scanf("%lf", &s.matriz[i][j]); //le o coef e guarda na posição que esta
             }
-            printf("Resultado da equação %d:", i + 1); //pede o termo independente da equação
+            printf("Resultado da equacao %d:", i + 1); //pede o termo independente da equação
             scanf("%lf", &s.matriz[i][s.colunas]);//resultado da equacao, fica na ultima coluna da linha [s.colunas]
         }
 
@@ -119,7 +119,7 @@ enum Classificacao classificarSistema(struct Sistema s){ //função que classifi
 
             printf("Sistema possivel e determinado\n");
             for(i = 0; i<s.colunas; i++){ //percorre todos valores das variaveis encontradas
-                printf("Solução: x%d = %f\n", i + 1, verificarVariavel[i]); //imprime a variavel como por ex x1 = valor
+                printf("Solucao: x%d = %f\n", i + 1, verificarVariavel[i]); //imprime a variavel como por ex x1 = valor
             }
             resultado= DETERMINADO;//classificando a função como determinado
         }
@@ -135,7 +135,7 @@ int adiconarHistorico(struct Registro historico[], int contHistorico, struct Sis
     }
 
     if(contHistorico >= 50){ //verifica se historico ta cheio
-        printf("Histórico cheio. Registro não foi salvo\n"); //se esta cheio não vai ser salvo
+        printf("Historico cheio. Registro nao foi salvo\n"); //se esta cheio não vai ser salvo
     }
     return contHistorico; //retorna cont atualizado 
 }
@@ -189,7 +189,7 @@ void salvarHistorico(struct Registro historico[], int contHistorico){ //agora va
         }
 
         fclose(arquivo);//fecha arquivo
-        printf("Histórico salvo!\n");
+        printf("Historico salvo!\n");
     }
 }
 
@@ -203,7 +203,7 @@ int carregarHistorico(struct Registro historico[]){ //função que le arquivo tx
     contHistorico = 0; //inicializa cont como 0
 
     if(arquivo == NULL){ //verifica se não exite ou não abre
-        printf("Nenhum histórico salvo\n");
+        printf("Nenhum historico salvo\n");
     }
     if(arquivo!= NULL){//verifica se foi aberto
         fscanf(arquivo, "%d", &contHistorico);//le o primeiro num do arquivo
@@ -222,7 +222,7 @@ int carregarHistorico(struct Registro historico[]){ //função que le arquivo tx
         }
 
         fclose(arquivo);//fecha ponteiro de arquivo
-        printf("Histórico carregado!\n");
+        printf("Historico carregado!\n");
 
     }
 
@@ -235,7 +235,7 @@ void verificarBase(){ //função para ver se um conj de vetores formam base R2 o
     int qtdVetores;
     struct Sistema s; //declara struct sistema para usarmos o escalonamento ja feito
 
-    printf("Qual dimensão? Escreva 2 para R2, e 3 para R3:\n");
+    printf("Qual dimensao? Escreva 2 para R2, e 3 para R3:\n");
     scanf("%d", &dimensao);
     printf("Quantos vetores quer testar?\n");
     scanf("%d", &qtdVetores);
@@ -256,14 +256,14 @@ void verificarBase(){ //função para ver se um conj de vetores formam base R2 o
         s = resolverSistema(s); //usando função de escalonamento para verificar dependencia
 
         if(s.qtdPivos == s.colunas){ //verifica se num de pivos é igual num de coluna
-            printf("É base do espaço R%d\n", dimensao);//se sim, são linearmente independentes, então é base
+            printf("E base do espaco R%d\n", dimensao);//se sim, são linearmente independentes, então é base
         }
         if(s.qtdPivos != s.colunas){ //se são diferentes significa que tem vetores dependentes
-            printf("Não é base do espaço R%d\n", dimensao);//logo, não forma base
+            printf("Nao e base do espaco R%d\n", dimensao);//logo, não forma base
         }
     }
     if(qtdVetores != dimensao){//se a qtd de vetores não bate com dimensão nunca pode ser base
-        printf("Não é base do espaço R%d: quantidade de vetores %d diferente da dimensão %d\n", dimensao, qtdVetores, dimensao);
+        printf("Nao e base do espaco R%d: quantidade de vetores %d diferente da dimensao %d\n", dimensao, qtdVetores, dimensao);
     }
 }
 
@@ -276,7 +276,7 @@ void verificarTransformacao(){ //função que verifica as propriedades se são i
     int injetora;//se for injetora
     int sobrejetora;//se for sobrejetora
 
-    printf("A dimensão do espaço de saída é o tanto de numero de linhas e a dimensão do espaço de entrada é o mesmo tanto de colunas(variaveis)!\n");
+    printf("A dimensao do espaco de saida e o tanto de numero de linhas e a dimensao do espaco de entrada e o mesmo tanto de colunas(variaveis)!\n");
     printf("Escreva o tanto de linhas e o tanto de colunas respectivamente:");
     scanf("%d", &linhas); //le imagem 
     scanf("%d", &colunas); //le dominio
@@ -284,7 +284,7 @@ void verificarTransformacao(){ //função que verifica as propriedades se são i
     s.linhas = linhas; //define qtd de linhas na struct
     s.colunas = colunas; //define qtd de colunas na struct
     
-    printf("Digite a matriz da transformação:\n");
+    printf("Digite a matriz da transformacao:\n");
     for(int i = 0; i < s.linhas; i++){//percorre as linhas
         for(int j = 0; j < s.colunas; j++){//percorre as colunas
             scanf("%lf", &s.matriz[i][j]);//le e guarda os coef
@@ -296,8 +296,8 @@ void verificarTransformacao(){ //função que verifica as propriedades se são i
     imagem = s.qtdPivos;//imagem igual ao posto da matriz
     nucleo = s.colunas - s.qtdPivos;//dim(nucleo) + dim(imagem) = dim(dominio) entao nucleo = colunas - imagem
 
-    printf("Dimensão do nucleo: %d\n", nucleo); 
-    printf("Dimensão da imagem: %d\n", imagem);
+    printf("Dimensao do nucleo: %d\n", nucleo); 
+    printf("Dimensao da imagem: %d\n", imagem);
 
     injetora = 0; //inicialmente assume que não é injetora
     if(nucleo == 0){//só é injetora se nucleo tiver apenas dimensão 0
@@ -309,14 +309,14 @@ void verificarTransformacao(){ //função que verifica as propriedades se são i
     }
     if(injetora == 1){
         if(sobrejetora == 1){ //se ela é injetora e sobrejetora, então ela é bijetora
-            printf("A transormação é bijetora\n");
+            printf("A transformacao e bijetora\n");
         }
     }
     if(injetora == 1){
-        printf("A transformação é injetora\n");
+        printf("A transformacao e injetora\n");
     }
     if(sobrejetora == 1){
-        printf("A transformação é sobrejetora\n");
+        printf("A transformacao e sobrejetora\n");
     }
 }
 
@@ -368,7 +368,7 @@ void autoValoresAutoVetores(){//função calculo polinomio para matriz 2X2
     somaDiagPrinc = a + d; //calculo do traço da matriz
     determinante = (a * d) - (b * c); //calcula determinante 
 
-    printf("Traço = %f\n", somaDiagPrinc);
+    printf("Traco = %f\n", somaDiagPrinc);
     printf("Determinante = %f\n", determinante);
 
     delta = (somaDiagPrinc * somaDiagPrinc) - (4 * determinante);//formula de bhaskara para delta (b² - 4ac)
@@ -411,7 +411,7 @@ void diagonalizarMatriz(){ //função que verifica se pode ser diagonalizada
         autovalor1 = (somaDiagPrinc + raizDelta) / 2;
         autovalor2 = (somaDiagPrinc - raizDelta) / 2;
 
-        printf("Matriz é diagonalizavel\n");//se uma matriz tem autovalores distintos reais, ela sempre é diagonalizavel
+        printf("Matriz e diagonalizavel\n");//se uma matriz tem autovalores distintos reais, ela sempre é diagonalizavel
         printf("Matriz diagonal:\n");
         printf("%f 0\n", autovalor1);//primeira linha da matriz autovalor 1 e 0 
         printf("0 %f\n", autovalor2);//segunda linha 0 e autovalor 2
@@ -432,18 +432,18 @@ void diagonalizarMatriz(){ //função que verifica se pode ser diagonalizada
         }
 
         if(diagonalizavel == 1){//verifica se é 
-            printf("Matriz é diaginalizavel\n");
+            printf("Matriz e diaginalizavel\n");
             printf("Matriz diagonal:\n");
             printf("%f 0\n", autovalor1);
             printf("0 %f\n", autovalor1);
         }
         if( diagonalizavel == 0){//se delta 0 mas não é multiplo de id então:
-            printf("Matriz não é diagonalizavel, faltam autovetores independentes\n"); //não existe 2 autovetores
+            printf("Matriz nao e diagonalizavel, faltam autovetores independentes\n"); //não existe 2 autovetores
         }
     }
     
     if(delta < 0){ //se delta é negativo entao:
-        printf("Matriz não é diagonalizavel, não tem autovalores reais\n");
+        printf("Matriz nao e diagonalizavel, nao tem autovalores reais\n");
     }
 }
 
@@ -453,7 +453,7 @@ struct Sistema lerSistemaArquivo(int *lido){//função para ler o sistema de um 
 
     arquivo = fopen("sistema.txt", "r");//abrindo arquivo no modo leitura
     if(arquivo == NULL){//se ponteiro for nulo então rquivo não existe
-        printf("Arquivo não encontrado");
+        printf("Arquivo nao encontrado");
         *lido = 0;//a leitura deu errado então recebe 0
     }else {
         fscanf(arquivo, "%d", &s.linhas);//qtd de equações
